@@ -14,6 +14,10 @@ resource google_compute_instance swarm {
 
   network_interface {
     network = "default"
+
+    access_config {
+      // Ephemeral IP
+    }
   }
 
   metadata_startup_script = file("${path.module}/startup_script")
