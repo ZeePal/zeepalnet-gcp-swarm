@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Disable docker live-restore then init docker swarm mode
+# Only do this if live-restore is enabled
+
+sudo sed -ir '/"live-restore":\s*true/{s//"live-restore": false/;h};${x;/./{x;q0};x;q1}' /etc/docker/daemon.json && \
+  sudo systemctl reload docker && \
+  sudo docker swarm init
